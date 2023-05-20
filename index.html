@@ -6,7 +6,7 @@
 <script>
     const username = "aiobatch2022";
     const repo = "files";
-    const authToken = "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";
+    const authToken = "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";
 
     async function saveNote() {
       var note = document.getElementById("note").value;
@@ -22,7 +22,7 @@
             milestone: expirationTime.toISOString()
           }, {
             headers: {
-              "Authorization": `Bearer ${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}`,
+              "Authorization": `Bearer ${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}`,
               "Content-Type": "application/json"
             }
           });
@@ -48,7 +48,7 @@
       try {
         const response = await axios.get(`https://api.github.com/repos/${aiobatch2022}/${files}/issues?labels=note&state=open`, {
           headers: {
-            "Authorization": `Bearer ${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}`,
+            "Authorization": `Bearer ${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}`,
             "Content-Type": "application/json"
           }
         });
@@ -89,7 +89,7 @@
       try {
         const response = await axios.get(`https://api.github.com/repos/${aiobatch2022}/${files}/issues?labels=note&state=all`, {
           headers: {
-            "Authorization": `Bearer ${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}`,
+            "Authorization": `Bearer ${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}`,
             "Content-Type": "application/json"
           }
         });
