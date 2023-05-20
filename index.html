@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="css/index.css">
+
+    <title>Students access    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+    function saveNote() {
+      var note = document.getElementById("note").value;
+      var expirationTime = new Date(document.getElementById("expirationTime").value); // Use the specified expiration time
+      var currentTime = new Date();
+
+      if (expirationTime > currentTime) {
+        var notes = localStorage.getItem("notes");
+        if (!notes) {
+          notes = [];
+        } else {
+          notes = JSON.parse(notes);
+        }
+        notes.push({ note: note, expirationTime: expirationTime });
+        localStorage.setItem("notes", JSON.stringify(notes));
+       //* alert("Note saved!");
+        document.getElementById("note").value = "";
+        document.getElementById("expirationTime").value = "";
+      } else {
+        alert("Invalid expiration time! Please enter a future time.");
+      }
+    }
+
+    function showNotes() {
+      var notes = JSON.parse(localStorage.getItem("notes"));
+
+      if (notes && notes.length > 0) {
+        var noteDisplay = document.getElementById("noteDisplay");
+        var expirationDisplay = document.getElementById("expirationDisplay");
+        noteDisplay.innerHTML = "";
+        expirationDisplay.innerHTML = "";
+
+        for (var i = 0; i < notes.length; i++) {
+          var note = notes[i].note;
+          var expirationTime = new Date(notes[i].expirationTime);
+
+          var noteDiv = document.createElement("div");
+          noteDiv.innerHTML = note;
+          noteDisplay.appendChild(noteDiv);
+
+          var expirationDiv = document.createElement("div");
+          expirationDiv.innerHTML = "Expires on: " + expirationTime.toString();
+          expirationDisplay.appendChild(expirationDiv);
+
+          if (expirationTime <= new Date()) {
+            noteDiv.style.display = "none";
+            expirationDiv.style.display = "none";
+          }
+        }
+      } else {
+        document.getElementById("noteDisplay").innerHTML = "No notes available.";
+        document.getElementById("expirationDisplay").innerHTML = "";
+      }
+    }
+    
+    function showOldNotes() {
+      var notes = JSON.parse(localStorage.getItem("notes"));
+
+      if (notes && notes.length > 0) {
+        var oldNotesDisplay = document.getElementById("oldNotesDisplay");
+        oldNotesDisplay.innerHTML = "";
+
+        for (var i = 0; i < notes.length; i++) {
+          var note = notes[i].note;
+          var expirationTime = new Date(notes[i].expirationTime);
+
+          if (expirationTime <= new Date()) {
+            var noteDiv = document.createElement("div");
+            noteDiv.innerHTML = note;
+            oldNotesDisplay.appendChild(noteDiv);
+
+            var expirationDiv = document.createElement("div");
+            expirationDiv.innerHTML = "Expired on: " + expirationTime.toString();
+            oldNotesDisplay.appendChild(expirationDiv);
+          }
+        }
+
+        if (oldNotesDisplay.innerHTML === "") {
+          oldNotesDisplay.innerHTML = "No old notes available.";
+        }
+      } else {
+        document.getElementById("oldNotesDisplay").innerHTML = "No old notes available.";
+      }
+    }
+  </script>
+  
+  </head>
+  <body>
+    <div>
+      
+    </div>
+    <div class="divheader">
+    <button class="homebutton">
+     Home
+     </button>
+    <button onclick="document.location='docs.html'" class="docsbutton">
+     Documents
+    </button>
+    <button onclick="document.location='view books.html'" class="booksbutton">
+     Books
+     </button>
+    <button onclick="document.location='view videos.html'" class="videosbutton">
+     Videos
+     </button>
+    </div>
+    <div>
+     <br>
+     <br>
+     <h2>All files of 2022 Batch</h2>
+      <br>
+    </div>
+    <br>
+    <div>
+     </button>
+    <p onclick="document.location='WEB_1 - docs.html'" class="buttonbody">
+     Documents
+    </p>
+    <br>
+    <p onclick="document.location='WEB_1 - books.html'" class="buttonbody">
+     Books
+     <p>
+      <br>
+    <p onclick="document.location='WEB_1 - videos.html'" class="buttonbody">
+     Videos
+     </p>
+    </div>
+    <div>
+      <h1>Today's Notes</h1>
+  <textarea id="note" rows="4" cols="45"></textarea><br>
+  Set Expiration Time: <input type="datetime-local" id="expirationTime"><br>
+  <button class="notessavebutton" onclick="saveNote()">Save Note</button>
+  <hr>
+  <h2 hidden class="notesh2">Active Note</h2>
+  <div id="noteDisplay"></div>
+  <div id="expirationDisplay"></div>
+  <p hidden >New Notes:</p>
+  <button class="notesbutton" onclick="showNotes()">Show new Notes</button>
+
+  <hr>
+  <h2 hidden class="notesh2">Old Notes</h2>
+  <div id="oldNotesDisplay"></div>
+  <button class="notesbutton" onclick="showOldNotes()">Show Old Notes.</button>
+    </div>
+  </body>
+</html>
+<style>
+
+</style>
