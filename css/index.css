@@ -7,6 +7,7 @@ html {
     font-weight: lighter;
 }
 .buttonbody {
+display: flex;
 width: auto;
 text-align: center;
 font-size: 38px;
@@ -17,12 +18,14 @@ transition:font-size 0.4s;
 transition:padding 1s;
 }
 .buttonbody:hover {
+display: flex;
   font-size: 48px;
   color: #161614;
   padding: 25px;
   background-color: white;
 }
 .buttonbody:active {
+    display: flex;
 opacity: 0.6;
   background-color: white;
   font-size: 48px;
