@@ -40,7 +40,7 @@ opacity: 0.6;
 }
 
 .homebutton {
-    display:block;
+    display: flex;
     float: left;
     text-align: center;
     font-family:Arial, fantasy;
@@ -74,7 +74,7 @@ opacity: 0.6;
     padding-bottom: 18px;
 }
 .docsbutton {
-    display:block;
+    display: flex;
     float: left;
     text-align: center;
     font-size: 16px;
@@ -103,7 +103,7 @@ opacity: 0.6;
   padding: 15px;
 }
 .booksbutton {
-    display:block;
+    display: flex;
     float: left;
     text-align: center;
     font-size: 16px;
@@ -132,7 +132,7 @@ opacity: 0.6;
   padding: 15px;
 }
 .videosbutton {
-    display:block;
+    display: flex;
     float: left;
     text-align: center;
     font-size: 16px;
